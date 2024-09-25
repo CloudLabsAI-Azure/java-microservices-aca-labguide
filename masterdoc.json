@@ -1,0 +1,49 @@
+[
+    {
+      "Name": "Java-Microservices-On-ACA",
+      "Language": "English",
+      "BaseURL": "https://github.com/CloudLabsAI-Azure/java-microservices-aca-labguide",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/getting-started.md",
+          "Order": 1
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-01.md",
+          "Order": 2
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-02.md",
+            "Order": 3
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-03.md",
+            "Order": 4
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-04.md",
+            "Order": 5
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-05.md",
+            "Order": 6
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-06.md",
+            "Order": 7
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-07.md",
+            "Order": 8
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-08.md",
+            "Order": 9
+        },
+        {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/java-microservices-aca-labguide/refs/heads/main/ex-09.md",
+            "Order": 10
+        }
+      ]
+    }
+  ]
