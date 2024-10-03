@@ -1,4 +1,4 @@
-# Exercise 1: Plan a Java application migration to Azure Container App [READ_ONLY]
+# Exercise 1: Plan a Java Application Migration to Azure Container App [read-only]
 
 ### Estimated Duration: 30 minutes
 
