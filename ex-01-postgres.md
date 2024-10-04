@@ -1,4 +1,4 @@
-# Exercise 2: Migrate a Spring Apps Microservices Application to Azure Container Apps [with Postgre SQL setup]
+# Exercise 2: Migrate a Spring Apps Microservices Application to Azure Container Apps [Postgre SQL Setup]
 
 ### Estimated Duration: 90 minutes
 
