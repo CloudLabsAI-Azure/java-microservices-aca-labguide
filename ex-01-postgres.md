@@ -412,7 +412,7 @@ In this task, you will build your application using maven, and will be using the
       --ingress internal \
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
-      --min-replicas 1 
+      --min-replicas 1 \
       --artifact ./spring-petclinic-customers-service/target/spring-petclinic-customers-service-$VERSION.jar \
       --runtime java
    ```
