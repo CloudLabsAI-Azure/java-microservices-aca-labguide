@@ -1,4 +1,4 @@
-# Deploying and running Java Applications in Azure Container App
+# Deploying and Running Java Application in Azure Container App
 
 ### Overall Estimated Duration: 4 Hours
 
@@ -28,7 +28,7 @@ Learn how to deploy and manage the Spring Petclinic microservices on Azure Conta
 
 ## Architecture
 
-The architecture uses a microservices approach, featuring a Container App Environment to host various microservices such as Customers, Vets, Admin, and Visits. It incorporates a Config Server for centralized configuration management and an API Gateway to handle incoming requests. Service discovery is facilitated by a Eureka server, ensuring efficient communication between services. Data storage is managed through a SQL database, while Virtual Networks provide network isolation and security, enhancing the overall integrity of the application.
+The architecture uses a microservices approach, featuring a Container App Environment to host various microservices such as API Gateway(frontend), Customers, Vets, Admin, and Visits. It incorporates a Config Server for centralized configuration management. Service discovery is facilitated by a Eureka server, ensuring efficient communication between services. Data storage is managed through a SQL database, while Virtual Networks provide network isolation and security, enhancing the overall integrity of the application.
 
 ## Architecture Diagram
 
