@@ -40,7 +40,6 @@ In this task, you will perform the steps to create a database administrator acco
          --server-name $POSTGRES_SERVER_NAME \
          --identity    $DB_ADMIN_USER_ASSIGNED_IDENTITY_NAME
 
-
       MSYS_NO_PATHCONV=1 az postgres flexible-server identity list \
          --resource-group $RESOURCE_GROUP \
          --server-name $POSTGRES_SERVER_NAME 
