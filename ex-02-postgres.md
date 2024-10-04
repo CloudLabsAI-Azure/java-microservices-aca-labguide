@@ -82,7 +82,7 @@ In this task, you will configure monitoring for your Azure Container Apps enviro
 
    ![](./media/ex2img7.png)
 
-   >**&#128221;Note:** The output may be diffrent in your case.
+   >**&#128221;Note:** If you are not able to see any results, move with further tasks, comback and check after sometime.
 
 ## Task 3: Configure Application Insights to receive monitoring information from your applications
 
@@ -170,6 +170,8 @@ In this task, you will configure Application Insights to receive monitoring data
    AI_VERSION=3.5.4
    curl -L -o ai.jar "https://github.com/microsoft/ApplicationInsights-Java/releases/download/$AI_VERSION/applicationinsights-agent-$AI_VERSION.jar"
    ```
+   ![](./media/ex-02-new1.png)
+
 1. Now select the **staging-acr (1)** directory from explorer. Click on **New File Icon (2)** at the top to create a new file inside staging-acr directory.
 
    ![](./media/ex2img1.png)
@@ -203,6 +205,10 @@ In this task, you will configure Application Insights to receive monitoring data
    ```
    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
    ```
+
+   > The output will look similar to this.
+
+      ![](./media/ex-02-mew2.png)
 
    ```
    MSYS_NO_PATHCONV=1 az containerapp create \
@@ -379,6 +385,10 @@ In this task, you will configure Application Insights to receive monitoring data
 
 1. Review the configurations and click on **Configure**.
 
+1. Please make sure, that the **Connected Apps** property for both java components are populated to **5** before proceeding further.
+
+   ![](./media/ex-01-new2.png)
+
  ## Task 4: Analyze application specific monitoring data
 
  Now that Application Insights is properly configured, you can use this service to monitor what is going on in your application. You can follow the below guidance to do so.
@@ -399,6 +409,8 @@ In this task, you will configure Application Insights to receive monitoring data
 
 1. Select **Application map** from the left menu. This will show you information about the different applications running in your Spring Cloud Service and their dependencies.
 
+    ![](./media/ex-02-new3.png)
+
     ![](./media/ex2img17.png)
 
 1. Select the **api-gateway** service. This will show you details about this application, like slowest requests and failed dependencies.
@@ -411,7 +423,7 @@ In this task, you will configure Application Insights to receive monitoring data
 
     ![](./media/ex2img20.png)
 
-   >**Tip:** You can also drag your mouse on the graph to select a specific time period, and it will update the view.
+   >**&#128161;Tip:** You can also drag your mouse on the graph to select a specific time period, and it will update the view.
 
 1. Select **Live Metrics** from left menu, to see live metrics of your application. This will show you near real time performance of your application, as well as the logs and traces coming in.
    

@@ -139,7 +139,7 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
    
    ![](./media/ex3img8.png)
 
-   >**Note:** The output of this command should show that the connection was made **successful**.
+   >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
 
 1. In the same way create the service connections for the `vets-service` and `visits-service`. and validate them.
 
@@ -186,7 +186,7 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 
    ![](./media/ex3img9.png)
 
-   >**Note:** The output of this command should show that the connection was made **successful**.
+   >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
 
 1. In the Azure Portal, navigate to your **customers-service** container app.
 
