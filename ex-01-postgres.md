@@ -208,8 +208,8 @@ In this task, you will create a private GitHub repository to securely store conf
         password: admin@123
     sql:
         init:
-        schema-locations: classpath*:db/mysql/schema.sql
-        data-locations: classpath*:db/mysql/data.sql
+        schema-locations: classpath*:db/postgres/schema.sql
+        data-locations: classpath*:db/postgres/data.sql
         mode: always
     jms:
         queue:
