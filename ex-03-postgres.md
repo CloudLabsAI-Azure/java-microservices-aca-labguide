@@ -21,7 +21,6 @@ In this task, you will perform the steps to create a database administrator acco
 1. Navigate back to **Git Bash** terminal, run the following command because You will need to allow the user assigned managed identity access to the database. To configure this, you will need to first make your current logged in user account database administrator. For this to work on a Postgres database you first need an additional managed identity.
 
     ```
-
      DB_ADMIN_USER_ASSIGNED_IDENTITY_NAME=uid-dbadmin-petclinic-<inject key="DeploymentID" enableCopy="false" />
    
      ADMIN_IDENTITY_RESOURCE_ID=$(az identity create \
@@ -34,18 +33,17 @@ In this task, you will perform the steps to create a database administrator acco
 1. Now you have to assign this identity to your **Postgres Server**.
 
     ```
-    
-     POSTGRES_SERVER_NAME=postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />
+      POSTGRES_SERVER_NAME=postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />
 
-     MSYS_NO_PATHCONV=1 az postgres flexible-server identity assign \
-        --resource-group $RESOURCE_GROUP \
-        --server-name $POSTGRES_SERVER_NAME \
-        --identity    $DB_ADMIN_USER_ASSIGNED_IDENTITY_NAME
+      MSYS_NO_PATHCONV=1 az postgres flexible-server identity assign \
+         --resource-group $RESOURCE_GROUP \
+         --server-name $POSTGRES_SERVER_NAME \
+         --identity    $DB_ADMIN_USER_ASSIGNED_IDENTITY_NAME
 
 
-     MSYS_NO_PATHCONV=1 az postgres flexible-server identity list \
-        --resource-group $RESOURCE_GROUP \
-        --server-name $POSTGRES_SERVER_NAME 
+      MSYS_NO_PATHCONV=1 az postgres flexible-server identity list \
+         --resource-group $RESOURCE_GROUP \
+         --server-name $POSTGRES_SERVER_NAME 
     ```
 
 1. Get the current logged in user and object ID by running this command. This will give you the info of the user account you are currently logged in with in the Azure CLI.
