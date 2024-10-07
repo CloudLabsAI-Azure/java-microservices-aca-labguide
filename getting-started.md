@@ -6,6 +6,8 @@
 
 The purpose of this lab is to guide you through the migration of the Spring Petclinic application to Azure. You will set up a GitHub repository for managing configurations and use Azure CLI to prepare the cloud environment. This involves creating a private repository, deploying the Spring Petclinic microservices to Azure Container Apps (ACA), and implementing Java components for configuration and discovery servers. After deploying the applications, you will add monitoring and end-to-end tracing to track availability and errors. Finally, you will enhance the security of your application by protecting sensitive information, such as database connection strings, from being directly embedded in your configuration code.
 
+This lab supports both MySQL and PostgreSQL for the Spring Petclinic application, offering flexibility based on your preferred database. Whether you choose MySQL or PostgreSQL for setup, the lab provides comprehensive, step-by-step instructions tailored to your selection. As you progress, you’ll receive clear guidance specific to the database option you choose.
+
 ## Objective
 
 Learn how to deploy and manage the Spring Petclinic microservices on Azure Container Apps while ensuring secure configuration management. Gain practical experience in orchestrating services, monitoring application performance, and protecting sensitive information in a cloud environment. By the end of this lab, you will be able to:
