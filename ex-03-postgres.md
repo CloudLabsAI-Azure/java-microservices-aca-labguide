@@ -1,4 +1,4 @@
-# Exercise 2.4: Connect to Database Securely using Identity
+# Exercise 2.3: Connect to Database Securely using Identity
 
 ### Estimated Duration: 60 minutes
 
