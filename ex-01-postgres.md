@@ -295,13 +295,13 @@ In this task, you will create a private GitHub repository to securely store conf
 
 1. Now you can close the new window, navigate back to your **Git Bash** terminal and run the below commands to set the **GitHub** identity.
 
+   >**&#128221;Note:** Make sure to replace the `<GitHub UserEmail>` and `<GitHub UserName>` with your actual GitHub Credentials.
+
    ```
    git config --global user.email "<GitHub UserEmail>"
 
    git config --global user.name "<GitHub UserName>"
    ```
-
-   >**&#128221;Note:** Make sure to replace the `<GitHub UserEmail>` and `<GitHub UserName>` with your actual GitHub Credentials.
     
    ![](./media/ex1img49.png)
 
