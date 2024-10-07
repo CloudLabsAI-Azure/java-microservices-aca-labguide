@@ -18,7 +18,21 @@ After you complete this lab, you will be able to:
 
 In this task, you will perform the steps to create a database administrator account by assigning a user-assigned managed identity to your Postgres server. Additionally, you will configure the current logged-in user as the database administrator using Azure CLI commands.
 
-1. Navigate back to **Git Bash** terminal, run the following command because You will need to allow the user assigned managed identity access to the database. To configure this, you will need to first make your current logged in user account database administrator. For this to work on a Postgres database you first need an additional managed identity.
+1. Before creating the administrator account, you need to enable **Microsoft Entra Authentication** from the portal.
+
+1. Navigate to the **Azure Portal** from your browser, from the resource list select **postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />** postgresql server.
+
+   ![](./media/imgupdates1.png)
+
+1. On your **Postgre SQL** page, select **Authentication (1)** from left menu under security, check **PostgreSQL and Microsoft Entra authentication (2)** option and save it using the **Save (3)** option from top menu.
+
+   ![](./media/imgupdates2.png)
+
+1. Once after clicking on **Save**, you will get a pop up **Set authentication and restart?**, click on **Continue** and wait untill the deployment is successful.
+
+   ![](./media/imgupdates3.png)
+
+1. Once the deployment is successful, navigate back to **Git Bash** terminal, run the following command because You will need to allow the user assigned managed identity access to the database. To configure this, you will need to first make your current logged in user account database administrator. For this to work on a Postgres database you first need an additional managed identity.
 
     ```
      DB_ADMIN_USER_ASSIGNED_IDENTITY_NAME=uid-dbadmin-petclinic-<inject key="DeploymentID" enableCopy="false" />
