@@ -34,7 +34,7 @@ The architecture uses a microservices approach, featuring a Container App Enviro
 
 ## Architecture Diagram
 
-![](./media/acalab2.png)
+![](./media/acalab-arch.png)
 
 ## Explanation of Components
 
