@@ -25,9 +25,13 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 
 1. Open the browser and navigate to [GitHub Login](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiVub_3iuCIAxUQzjgGHUXtIJgQFnoECAkQAQ&url=https%3A%2F%2Fgithub.com%2Flogin&usg=AOvVaw0YPQjBCLvq4nLugtBaJju7&cshid=1727335715159967&opi=89978449) to login to your GitHub account.
 
-1. On the GitHub Login page, provide your github credentials which you can find in the **Environment** page.
+1. On the GitHub Login page, provide your github credentials which you have copied earlier. CLick on **Sign in**.
 
    ![](./media/ex1img30.png)
+
+1. Once after clicking on **Sign in**, you will be prompted to provide **verification code** which will be sent to email. Navigate to [Outlook Login](https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=162&ct=1728385101&rver=7.5.2211.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3den-us%26country%3dus%26RpsCsrfState%3d906c2f66-4c3e-997e-f6dc-9ab11061dd1a&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c) and login using the same credentials you used for GitHub and note down the **verification code** and use it here.
+
+   ![](./media/imgupdates4.png)
 
 1. Once you successfully login to GitHub, open a new tab in your browser and navigate to [Parent Repo](https://github.com/CloudLabsAI-Azure/java-microservices-aca-lab/tree/main).
 
@@ -99,6 +103,8 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 1. When prompts, click on **No, sign in to this app only** and continue.
 
 1. Return to your **Visual Studio Code** terminal, now it prompts you to select subscription enter **131** and hit enter.
+
+  >**Note:** If you have only one subscription showing in the prompt, no need to select any subscription, just hit enter and it will select the default subscription.
 
 1. After successfully loging into your account, in terminal and run the following command to add the required extension.
 
