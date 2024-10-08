@@ -202,6 +202,10 @@ In this task, you will create a private GitHub repository to securely store conf
    code .
    ```
 
+1. on **Do you trust the authors of the files of this folder?** pop up, click on **Yes, I trust the authors**.
+
+   ![](./media/ex-01-new.png)
+
 1. Once a new window of **Visual Studio Code** opened, select **application.yml** file from the explorer menu.
 
    ![](./media/ex1img51.png)
