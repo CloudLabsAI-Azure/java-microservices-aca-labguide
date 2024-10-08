@@ -194,6 +194,11 @@ In this task, you will configure Application Insights to receive monitoring data
 
    ```
 
+1. Once the changes are done, make sure to save the file by using the **Save** option from file menu.
+
+   ![](./media/ex1img53.png)
+
+
 1. Run the below command blocks one by one, which deletes the previous container app and creates a new container app from `Dockerfile`.
 
    ```
