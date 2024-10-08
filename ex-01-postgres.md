@@ -370,7 +370,7 @@ In this task, you will build your application using maven, and will be using the
    ```
    RESOURCE_GROUP=petclinic-<inject key="DeploymentID" enableCopy="false" />
    ACA_ENVIRONMENT=acaenv-petclinic-<inject key="DeploymentID" enableCopy="false" />
-   MYSQL_SERVER_NAME=mysql-<inject key="DeploymentID" enableCopy="false" />
+   POSTGRES_SERVER_NAME=postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />
    VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
    echo $VERSION
    ```
