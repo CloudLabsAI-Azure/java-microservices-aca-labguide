@@ -163,7 +163,7 @@ In this task, you will create a private GitHub repository to securely store conf
 
    >**&#128221;Note:** Make sure you note this token in a notepad. It will be used further in this lab.
 
-1. From your repository page, copy the **Git URL** using the **<> Code** option.
+1. From the repository page of your **configuration repository** that you have created before, copy the **Git URL** using the **<> Code** option.
 
    ![](./media/ex1img39.png)
 
