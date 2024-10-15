@@ -461,6 +461,13 @@ In this task, you will build your application using maven, and will be using the
       --runtime java
    ```
 
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   - If you receive a success message, you can proceed to the next task.
+   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+     
+   <validation step="3a2caee8-41fa-45ee-9a88-7b43faf38a15" />
+
 ## Task 4: Create the java components for your config and discovery server
 
 In this task, you will create configuration server which uses the configuration repository created earlier, a eureka server for service discovery with the help of Java components in container environment and Test the application.
@@ -546,6 +553,13 @@ In this task, you will create configuration server which uses the configuration 
    ![](./media/ex1img28.png)
 
    >**&#128221;Note:** Refresh the page, if you are not able to see user data.
+
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   - If you receive a success message, you can proceed to the next task.
+   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+     
+   <validation step="915e9f16-2659-4ef2-b088-f29237642eef" />
 
 ## Summary
 
