@@ -47,6 +47,8 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 
    ![](./media/ex1img32.png)
 
+   >**Note:** If you facing any issues using microsoft edge, please install chrome browser and continue further.
+
 1. Now you have successfully forked the repository to your GitHub Account.
 
    ![](./media/ex1img33.png)
@@ -102,14 +104,15 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 
 1. When prompts, click on **No, sign in to this app only** and continue.
 
-1. Return to your **Visual Studio Code** terminal, now it prompts you to select subscription enter **131** and hit enter.
+1. Return to your **Visual Studio Code** terminal, now it prompts you to select subscription enter **1** and hit enter.
 
-  >**Note:** If you have only one subscription showing in the prompt, no need to select any subscription, just hit enter and it will select the default subscription.
+   >**Note:** If you are seeing a list of subscriptions showing in the prompt, then type 131 and hit enter to select the proper subscription.
 
 1. After successfully loging into your account, in terminal and run the following command to add the required extension.
 
    ```
-   az extension add --name containerapp --upgrade
+   az extension remove -n containerapp
+   az extension add --name containerapp --version 0.3.50
    ```
 
 ## Task 2: Set up a configuration repository
@@ -213,90 +216,86 @@ In this task, you will create a private GitHub repository to securely store conf
 1. Once the **application.yml** file is open, replace the existing content with the following content.
 
    ```
-    # COMMON APPLICATION PROPERTIES
+   # COMMON APPLICATION PROPERTIES
 
-    spring:
-    datasource:
-        url: jdbc:postgresql://<your-postgresql-server-name>.postgres.database.azure.com:5432/petclinic?sslmode=require
-        username: myadmin
-        password: admin@123
-    sql:
-        init:
-        schema-locations: classpath*:db/postgres/schema.sql
-        data-locations: classpath*:db/postgres/data.sql
-        mode: always
-    jms:
-        queue:
-        visits-requests: visits-requests
-        visits-confirmations: visits-confirmations
-        servicebus:
-        enabled: false  # disable messaging support by default
-        namespace: ${SERVICEBUS_NAMESPACE}
-        pricing-tier: premium
-        passwordless-enabled: true
-        credential:
-            managed-identity-enabled: true
-            client-id: ${CLIENT_ID}
-    sleuth:
-        sampler:
-        probability: 1.0
-    cloud:
-        config:
-        # Allow the microservices to override the remote properties with their own System properties or config file
-        allow-override: true
-        # Override configuration with any local property source
-        override-none: true
-    jpa:
-        open-in-view: false
-        hibernate:
-        ddl-auto: none
-        show-sql: true
+   # embedded database init, supports mysql too trough the 'mysql' spring profile
+   spring:
+   datasource:
+      url: jdbc:postgresql://<your-postgresql-server-name>.database.azure.com:5432/petclinic?sslmode=require
+      username: myadmin
+      password: admin@123
+   sql:
+      init:
+         schema-locations: classpath*:db/postgres/schema.sql
+         data-locations: classpath*:db/postgres/data.sql
+         mode: ALWAYS
+   jms:
+      queue:
+         visits-requests: visits-requests
+         visits-confirmations: visits-confirmations
+      servicebus:
+         enabled: false  # disable messaging support by default
+         namespace: ${SERVICEBUS_NAMESPACE}
+         pricing-tier: premium
+         passwordless-enabled: true
+         credential:
+         managed-identity-enabled: true
+         client-id: ${CLIENT_ID}
+   sleuth:
+      sampler:
+         probability: 1.0
+   cloud:
+      config:
+         # Allow the microservices to override the remote properties with their own System properties or config file
+         allow-override: true
+         # Override configuration with any local property source
+         override-none: true
+   jpa:
+      open-in-view: false
+      hibernate:
+         ddl-auto: none
+      show-sql: true
 
-    # Spring Boot 1.5 makes actuator secure by default
-    management.security.enabled: false
-    # Enable all Actuators and not only the two available by default /health and /info starting Spring Boot 2.0
-    management.endpoints.web.exposure.include: "*"
+   # Spring Boot 1.5 makes actuator secure by default
+   management.security.enabled: false
+   # Enable all Actuators and not only the two available by default /health and /info starting Spring Boot 2.0
+   management.endpoints.web.exposure.include: "*"
 
-    # Temporary hack required by the Spring Boot 2 / Spring Cloud Finchley branch
-    # Waiting issue https://github.com/spring-projects/spring-boot/issues/13042
-    spring.cloud.refresh.refreshable: false
+   # Temporary hack required by the Spring Boot 2 / Spring Cloud Finchley branch
+   # Waiting issue https://github.com/spring-projects/spring-boot/issues/13042
+   spring.cloud.refresh.refreshable: false
 
-    # Logging
-    logging:
-    level:
-        org.springframework: INFO
-        org.hibernate.SQL: DEBUG
-        org.springframework.jdbc.core: DEBUG
-        org.springframework.orm.jpa: DEBUG
+   # Logging
+   logging.level.org.springframework: INFO
 
-    # enable health probes
-    management.health.livenessState.enabled: true
-    management.health.readinessState.enabled: true
-    management.endpoint.health.probes.enabled: true
+   # enable health probes
+   management.health.livenessState.enabled: true
+   management.health.readinessState.enabled: true
+   management.endpoint.health.probes.enabled: true
 
-    # Metrics
-    management:
-    endpoint:
-        metrics:
-        enabled: true
-        prometheus:
-        enabled: true
-    endpoints:
-        web:
-        exposure:
-            include: '*'
-    metrics:
-        export:
-        prometheus:
-            enabled: true
-    eureka:
-    client:
-        serviceUrl:
-        defaultZone: http://discovery-server:8761/eureka/
-        enableSelfPreservation: true
-        registryFetchIntervalSeconds: 20
-    instance:
-        preferIpAddress: true
+   # Metrics
+   management:
+   endpoint:
+      metrics:
+         enabled: true
+      prometheus:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+         include: '*'
+   metrics:
+      export:
+         prometheus:
+         enabled: true
+   eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://discovery-server:8761/eureka/
+      enableSelfPreservation: true
+      registryFetchIntervalSeconds: 20
+   instance:
+      preferIpAddress: true
    ```
 
 1. Make sure you replace the `<your-postgresql-server-name>` with **postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />**.
@@ -391,8 +390,7 @@ In this task, you will build your application using maven, and will be using the
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
       --min-replicas 1 \
-      --artifact ./spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-$VERSION.jar \
-      --runtime java
+      --artifact ./spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-$VERSION.jar 
    ```
 
    >**&#128221;Note:** If the build fails, please run the command again this will resolve the error.
@@ -412,8 +410,7 @@ In this task, you will build your application using maven, and will be using the
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
       --min-replicas 1 \
-      --artifact ./spring-petclinic-admin-server/target/spring-petclinic-admin-server-$VERSION.jar \
-      --runtime java
+      --artifact ./spring-petclinic-admin-server/target/spring-petclinic-admin-server-$VERSION.jar 
    ```
 
    * customers-service
@@ -427,8 +424,7 @@ In this task, you will build your application using maven, and will be using the
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
       --min-replicas 1 \
-      --artifact ./spring-petclinic-customers-service/target/spring-petclinic-customers-service-$VERSION.jar \
-      --runtime java
+      --artifact ./spring-petclinic-customers-service/target/spring-petclinic-customers-service-$VERSION.jar 
    ```
 
    * vets-service
@@ -442,8 +438,7 @@ In this task, you will build your application using maven, and will be using the
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
       --min-replicas 1 \
-      --artifact ./spring-petclinic-vets-service/target/spring-petclinic-vets-service-$VERSION.jar \
-      --runtime java
+      --artifact ./spring-petclinic-vets-service/target/spring-petclinic-vets-service-$VERSION.jar 
    ```
 
    * visits-service
@@ -457,8 +452,7 @@ In this task, you will build your application using maven, and will be using the
       --target-port 8080 \
       --environment $ACA_ENVIRONMENT \
       --min-replicas 1 \
-      --artifact ./spring-petclinic-visits-service/target/spring-petclinic-visits-service-$VERSION.jar \
-      --runtime java
+      --artifact ./spring-petclinic-visits-service/target/spring-petclinic-visits-service-$VERSION.jar 
    ```
 
    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
