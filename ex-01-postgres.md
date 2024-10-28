@@ -455,12 +455,12 @@ In this task, you will build your application using maven, and will be using the
       --artifact ./spring-petclinic-visits-service/target/spring-petclinic-visits-service-$VERSION.jar 
    ```
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+- If you receive a success message, you can proceed to the next task.
+- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
      
-   <validation step="3a2caee8-41fa-45ee-9a88-7b43faf38a15" />
+<validation step="3a2caee8-41fa-45ee-9a88-7b43faf38a15" />
 
 ## Task 4: Create the java components for your config and discovery server
 
@@ -468,24 +468,24 @@ In this task, you will create configuration server which uses the configuration 
 
 1. To setup java components like config server and eureka server, In the Azure Portal, select **resource group** from navigate menu.
 
-   ![](./media/ex1img8.png)
+    ![](./media/ex1img8.png)
 
 1. From the resource group list, select the resource group **petclinic-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](./media/ex1img9.png)
+    ![](./media/ex1img9.png)
 
 
 1. In the resource list, select **acaenv-petclinic-<inject key="DeploymentID" enableCopy="false" />** from the Azure Portal.
 
-   ![](./media/ex1img14.png)
+    ![](./media/ex1img14.png)
 
 1. In the Container app environment's overview page, select **Services (1)** from the left menu, click on **+ Configure (2)** and select **Java component (3)**.
 
-   ![](./media/ex1img15.png)
+    ![](./media/ex1img15.png)
 
 1. On **Configure Java component** page, select **Java component type** as **Config Server for Spring (1)**, **Java component name** as **myconfigserver** and click on **+ Add (3)** to add your config repository details. 
 
-   ![](./media/ex1img16.png)
+    ![](./media/ex1img16.png)
 
 1. In **Add Git repository** page, provide details as follows:
 
@@ -501,7 +501,7 @@ In this task, you will create configuration server which uses the configuration 
 
 1. Once the repository details added, select all your container apps from the dropdown under **Bindings**. Verify once all the **container apps selected (1)**, click on **Next (2)**. 
 
-   ![](./media/ex1img18.png)
+    ![](./media/ex1img18.png)
 
 1. Review the configurations and click on **Configure**.
 
@@ -509,7 +509,7 @@ In this task, you will create configuration server which uses the configuration 
 
 1. Once the configuration is successfull, go back to the **Services** pane from the left menu, click on **+ Configure** and select **Java component**.
 
-   ![](./media/ex1img19.png)
+    ![](./media/ex1img19.png)
 
 1. On **Configure Java component** page, provide the following details:
 
@@ -528,32 +528,32 @@ In this task, you will create configuration server which uses the configuration 
 
 1. Please make sure, that the **Connected Apps** property for both java components are populated to **5** before proceeding further.
 
-   ![](./media/ex-01-new2.png)
+    ![](./media/ex-01-new2.png)
 
 1. Once the configurations are done, navigate to the resource list and select **api-gateway** Container App from the list.
 
-   ![](./media/ex1img21.png)
+    ![](./media/ex1img21.png)
 
 1. Copy the **Application URL**, paste it in a new browser tab.
 
-   ![](./media/ex1img29.png)
+    ![](./media/ex1img29.png)
 
 1. Now you will see your **Petclinic** application is successfully running on container apps.
 
-   ![](./media/ex1img27.png)
+    ![](./media/ex1img27.png)
 
 1. Navigate to **owners** tab and select **All**, you can see the user details which are rendered from the database.
 
-   ![](./media/ex1img28.png)
+    ![](./media/ex1img28.png)
 
-   >**&#128221;Note:** Refresh the page, if you are not able to see user data.
+    >**&#128221;Note:** Refresh the page, if you are not able to see user data.
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+- If you receive a success message, you can proceed to the next task.
+- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
      
-   <validation step="915e9f16-2659-4ef2-b088-f29237642eef" />
+<validation step="915e9f16-2659-4ef2-b088-f29237642eef" />
 
 ## Summary
 
