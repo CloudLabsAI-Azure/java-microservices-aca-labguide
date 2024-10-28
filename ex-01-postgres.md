@@ -474,7 +474,6 @@ In this task, you will create configuration server which uses the configuration 
 
     ![](./media/ex1img9.png)
 
-
 1. In the resource list, select **acaenv-petclinic-<inject key="DeploymentID" enableCopy="false" />** from the Azure Portal.
 
     ![](./media/ex1img14.png)
@@ -489,15 +488,15 @@ In this task, you will create configuration server which uses the configuration 
 
 1. In **Add Git repository** page, provide details as follows:
 
-   - **Type** : Leave as `Default` **(1)**.
-   - **URI** : Provide your **Config reposirtoy URI (2)** that you have copied earlier.
-   - **Branch name** : `main` **(3)**.
-   - **Authentication** : Select `HTTP Basic` **(4)** from the dropdown.
-   - **Username** : Provide your **GitHub Username (5)**.
-   - **Password** : Use the **PAT Token (6)**, that you have copied earlier.
-   - Click on **Add (7)**.
+    - **Type** : Leave as `Default` **(1)**.
+    - **URI** : Provide your **Config reposirtoy URI (2)** that you have copied earlier.
+    - **Branch name** : `main` **(3)**.
+    - **Authentication** : Select `HTTP Basic` **(4)** from the dropdown.
+    - **Username** : Provide your **GitHub Username (5)**.
+    - **Password** : Use the **PAT Token (6)**, that you have copied earlier.
+    - Click on **Add (7)**.
 
-     ![](./media/ex1img17.png)
+      ![](./media/ex1img17.png)
 
 1. Once the repository details added, select all your container apps from the dropdown under **Bindings**. Verify once all the **container apps selected (1)**, click on **Next (2)**. 
 
@@ -513,18 +512,18 @@ In this task, you will create configuration server which uses the configuration 
 
 1. On **Configure Java component** page, provide the following details:
 
-   - **Java component type** : Select `Eureka Server for Spring` **(1)** from dropdown.
-   - **Java component name** : `eureka` **(2)**.
-   - **Bindings** : Make sure all **Container Apps (3)** are selected.
-   - **Property name** : `eureka.server.response-cache-update-interval-ms` **(4)**.
-   - **Value** : `10000` **(5)**.
-   - Click on **Next (6)**.
+    - **Java component type** : Select `Eureka Server for Spring` **(1)** from dropdown.
+    - **Java component name** : `eureka` **(2)**.
+    - **Bindings** : Make sure all **Container Apps (3)** are selected.
+    - **Property name** : `eureka.server.response-cache-update-interval-ms` **(4)**.
+    - **Value** : `10000` **(5)**.
+    - Click on **Next (6)**.
 
-     ![](./media/ex1img20.png)
+      ![](./media/ex1img20.png)
 
 1. Review the configurations and click on **Configure**.
 
-   >**&#128161;Tip:** **Eureka Server** - is a core component of Spring Cloud Netflix used for service discovery in microservice architectures. It allows microservices to register themselves and discover other services, enabling dynamic scaling and routing in distributed systems.
+    >**&#128161;Tip:** **Eureka Server** - is a core component of Spring Cloud Netflix used for service discovery in microservice architectures. It allows microservices to register themselves and discover other services, enabling dynamic scaling and routing in distributed systems.
 
 1. Please make sure, that the **Connected Apps** property for both java components are populated to **5** before proceeding further.
 
