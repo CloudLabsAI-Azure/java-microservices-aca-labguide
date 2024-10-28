@@ -504,7 +504,7 @@ In this task, you will create configuration server which uses the configuration 
 
 1. Review the configurations and click on **Configure**.
 
-   >**&#128161;Tip:** **Config Server** - refers to a Spring Cloud Config Server deployed on Azure, which provides centralized external configuration for distributed systems, particularly Java-based microservices.
+    >**&#128161;Tip:** **Config Server** - refers to a Spring Cloud Config Server deployed on Azure, which provides centralized external configuration for distributed systems, particularly Java-based microservices.
 
 1. Once the configuration is successfull, go back to the **Services** pane from the left menu, click on **+ Configure** and select **Java component**.
 
