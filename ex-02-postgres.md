@@ -84,12 +84,12 @@ In this task, you will configure monitoring for your Azure Container Apps enviro
 
    >**&#128221;Note:** If you are not able to see any results, move with further tasks, comback and check after sometime.
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+- If you receive a success message, you can proceed to the next task.
+- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
      
-   <validation step="	5abe5e9e-0f11-4946-a49f-1d038c8f5c7a" />
+<validation step="	5abe5e9e-0f11-4946-a49f-1d038c8f5c7a" />
 
 ## Task 3: Configure Application Insights to receive monitoring information from your applications
 
@@ -99,310 +99,310 @@ In this task, you will configure Application Insights to receive monitoring data
 
 1. As a first step, you will need to create an **Application Insights** resource. To do that, navigate back to the **Git Bash** terminal window inside your **Visual Studio Code** and run the following command.
 
-   ```
-    LOCATION=<inject key="Region" enableCopy="false" />
+    ```
+     LOCATION=<inject key="Region" enableCopy="false" />
 
-    WORKSPACEID=$(az monitor log-analytics workspace show -n $WORKSPACE -g $RESOURCE_GROUP --query id -o tsv)
+     WORKSPACEID=$(az monitor log-analytics workspace show -n $WORKSPACE -g $RESOURCE_GROUP --query id -o tsv)
 
-    AINAME=ai-petclinic-<inject key="DeploymentID" enableCopy="false" />
+     AINAME=ai-petclinic-<inject key="DeploymentID" enableCopy="false" />
 
-    az extension add -n application-insights
+     az extension add -n application-insights
 
-    MSYS_NO_PATHCONV=1 az monitor app-insights component create \
-        --app $AINAME \
-        --location $LOCATION \
-        --kind web \
-        -g $RESOURCE_GROUP \
-        --workspace $WORKSPACEID
-   ```
-   >**&#128161;Tip:** Azure Application Insights is an extensible service for monitoring live applications, providing real-time insights into performance, usage, and diagnostics.
+     MSYS_NO_PATHCONV=1 az monitor app-insights component create \
+         --app $AINAME \
+         --location $LOCATION \
+         --kind web \
+         -g $RESOURCE_GROUP \
+         --workspace $WORKSPACEID
+    ```
+    >**&#128161;Tip:** Azure Application Insights is an extensible service for monitoring live applications, providing real-time insights into performance, usage, and diagnostics.
 
 1. Make note of the Application Insights connection string, you will need this later in this module.
  
-   ```
-   AI_CONNECTIONSTRING=$(az monitor app-insights component show --app $AINAME -g $RESOURCE_GROUP --query connectionString --output tsv)
+    ```
+    AI_CONNECTIONSTRING=$(az monitor app-insights component show --app $AINAME -g $RESOURCE_GROUP --query connectionString --output tsv)
 
-   echo $AI_CONNECTIONSTRING
-   ```
+    echo $AI_CONNECTIONSTRING
+    ```
 
 1. Since you will now be containerizing the different microservices, you will also need to create a new **Azure Container Registry (ACR)** instance for holding your container images.
 
-   ```
-   MYACR=acrpetclinic<inject key="DeploymentID" enableCopy="false" />
+    ```
+    MYACR=acrpetclinic<inject key="DeploymentID" enableCopy="false" />
 
-   az acr create \
-    -n $MYACR \
-    -g $RESOURCE_GROUP \
-    --sku Basic \
-    --admin-enabled true
-   ```
+    az acr create \
+     -n $MYACR \
+     -g $RESOURCE_GROUP \
+     --sku Basic \
+     --admin-enabled true
+    ```
    
-   >**&#128161;Tip:** Azure Container Registry (ACR) is a fully managed service that allows you to store, build, and manage container images and artifacts in a private registry, seamlessly integrating with your Azure services and CI/CD pipelines.
+    >**&#128161;Tip:** Azure Container Registry (ACR) is a fully managed service that allows you to store, build, and manage container images and artifacts in a private registry, seamlessly integrating with your Azure services and CI/CD pipelines.
 
 1. Run the following command to  create an identity which can be used by your container apps to connect to the Container Registry. 
 
-   ```
-   ACA_IDENTITY=uid-petclinic-<inject key="DeploymentID" enableCopy="false" />
+    ```
+    ACA_IDENTITY=uid-petclinic-<inject key="DeploymentID" enableCopy="false" />
 
-   MSYS_NO_PATHCONV=1 az identity create --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --output json
-   USER_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query id --output tsv)
+    MSYS_NO_PATHCONV=1 az identity create --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --output json
+    USER_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query id --output tsv)
 
-   SP_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query principalId --output tsv)
-   echo $USER_ID
-   echo $SP_ID
-   ```
+    SP_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query principalId --output tsv)
+    echo $USER_ID
+    echo $SP_ID
+    ```
 1. Assign user identity to the container apps environment by running the below command.
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp env identity assign -g $RESOURCE_GROUP -n $ACA_ENVIRONMENT --user-assigned $USER_ID
-   ```
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp env identity assign -g $RESOURCE_GROUP -n $ACA_ENVIRONMENT --user-assigned $USER_ID
+    ```
 
 1. Assign access for the container app identity to pull images from your container registry.
 
-   ```
-   ACR_ID=$(az acr show -n $MYACR -g $RESOURCE_GROUP --query id -o tsv)
-   MSYS_NO_PATHCONV=1 az role assignment create --assignee $SP_ID --scope $ACR_ID --role acrpull
-   ```
+    ```
+    ACR_ID=$(az acr show -n $MYACR -g $RESOURCE_GROUP --query id -o tsv)
+    MSYS_NO_PATHCONV=1 az role assignment create --assignee $SP_ID --scope $ACR_ID --role acrpull
+    ```
 
 1. As you are in the `src` directory, create a **staging-acr** folder and navigate to it by running this command.
 
-   ```
-   mkdir staging-acr
-   cd ./staging-acr
-   ```
+    ```
+    mkdir staging-acr
+    cd ./staging-acr
+    ```
 
 1. In this new folder download the latest application insights agent jar file. Also rename the jar file to **ai.jar**. You can do this by running the following command.
 
-   ```
-   AI_VERSION=3.5.4
-   curl -L -o ai.jar "https://github.com/microsoft/ApplicationInsights-Java/releases/download/$AI_VERSION/applicationinsights-agent-$AI_VERSION.jar"
-   ```
-   ![](./media/ex-02-new1.png)
+    ```
+    AI_VERSION=3.5.4
+    curl -L -o ai.jar "https://github.com/microsoft/ApplicationInsights-Java/releases/download/$AI_VERSION/applicationinsights-agent-$AI_VERSION.jar"
+    ```
+    ![](./media/ex-02-new1.png)
 
 1. Now select the **staging-acr (1)** directory from explorer. Click on **New File Icon (2)** at the top to create a new file inside staging-acr directory.
 
-   ![](./media/ex2img1.png)
+    ![](./media/ex2img1.png)
 
 1. Provide the name of the file as `Dockerfile` and hit enter to open that file.
 
-   >**&#128221;Note:** Provide the name carefully, as the Dockerfile should not have any file extension and also it is case sensitive.
+    >**&#128221;Note:** Provide the name carefully, as the Dockerfile should not have any file extension and also it is case sensitive.
 
 1. Paste the following data inside the `Dockerfile`. This Dockerfile copies the application jar file and ai.jar file into the container. It also adds the ai.jar file as a javaagent to your app, so it can start logging.
 
-   ```
-   # Build stage
-   FROM mcr.microsoft.com/openjdk/jdk:17-mariner
-   COPY spring-petclinic-my-service-3.2.5.jar app.jar
-   COPY ai.jar ai.jar
-   EXPOSE 8080
+    ```
+    # Build stage
+    FROM mcr.microsoft.com/openjdk/jdk:17-mariner
+    COPY spring-petclinic-my-service-3.2.5.jar app.jar
+    COPY ai.jar ai.jar
+    EXPOSE 8080
 
-   # Run the jar file
-   ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-javaagent:/ai.jar","-jar","/app.jar"]
+    # Run the jar file
+    ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-javaagent:/ai.jar","-jar","/app.jar"]
 
-   ```
+    ```
 
 1. Once the changes are done, make sure to save the file by using the **Save** option from file menu.
 
-   ![](./media/ex1img53.png)
+    ![](./media/ex1img53.png)
 
 
 1. Run the below command blocks one by one, which deletes the previous container app and creates a new container app from `Dockerfile`.
 
-   ```
-   export APP_NAME="api-gateway"
-   cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
-   sed -i "s|my-service|$APP_NAME|g" Dockerfile
-   ```
+    ```
+    export APP_NAME="api-gateway"
+    cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar  spring-petclinic-$APP_NAME-$VERSION.jar
+    sed -i "s|my-service|$APP_NAME|g" Dockerfile
+    ```
 
-   ```
-   az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
-   ```
+    ```
+    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
+    ```
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp create \
-      --name $APP_NAME \
-      --resource-group $RESOURCE_GROUP \
-      --source .  \
-      --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "api-gateway"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
-      --registry-server $MYACR.azurecr.io \
-      --registry-identity $USER_ID \
-      --environment $ACA_ENVIRONMENT \
-      --user-assigned $USER_ID \
-      --ingress external \
-      --target-port 8080 \
-      --min-replicas 1 \
-      --runtime java
-   ```
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp create \
+       --name $APP_NAME \
+       --resource-group $RESOURCE_GROUP \
+       --source .  \
+       --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "api-gateway"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
+       --registry-server $MYACR.azurecr.io \
+       --registry-identity $USER_ID \
+       --environment $ACA_ENVIRONMENT \
+       --user-assigned $USER_ID \
+       --ingress external \
+       --target-port 8080 \
+       --min-replicas 1 \
+       --runtime java
+    ```
    
-   ```
-   sed -i "s|$APP_NAME|my-service|g" Dockerfile
-   rm spring-petclinic-$APP_NAME-$VERSION.jar
-   ```
+    ```
+    sed -i "s|$APP_NAME|my-service|g" Dockerfile
+    rm spring-petclinic-$APP_NAME-$VERSION.jar
+    ```
 
 1. Once the api-gateway deployment has succeeded, execute the same statements for the other microservices.
 
-   * customers-service
+    * customers-service
 
-   ```
-   export APP_NAME="customers-service"
-   cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
-   sed -i "s|my-service|$APP_NAME|g" Dockerfile
-   ```
+    ```
+    export APP_NAME="customers-service"
+    cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
+    sed -i "s|my-service|$APP_NAME|g" Dockerfile
+    ```
 
-   ```
-   az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
-   ```
+    ```
+    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
+    ```
+ 
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp create \
+       --name $APP_NAME \
+       --resource-group $RESOURCE_GROUP \
+       --source .  \
+       --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "customers-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
+       --registry-server $MYACR.azurecr.io \
+       --registry-identity $USER_ID \
+       --environment $ACA_ENVIRONMENT \
+       --user-assigned $USER_ID \
+       --ingress internal \
+       --target-port 8080 \
+       --min-replicas 1 \
+       --runtime java
+    ``` 
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp create \
-      --name $APP_NAME \
-      --resource-group $RESOURCE_GROUP \
-      --source .  \
-      --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "customers-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
-      --registry-server $MYACR.azurecr.io \
-      --registry-identity $USER_ID \
-      --environment $ACA_ENVIRONMENT \
-      --user-assigned $USER_ID \
-      --ingress internal \
-      --target-port 8080 \
-      --min-replicas 1 \
-      --runtime java
-   ``` 
+    ```
+    sed -i "s|$APP_NAME|my-service|g" Dockerfile
+    rm spring-petclinic-$APP_NAME-$VERSION.jar
+    ```
 
-   ```
-   sed -i "s|$APP_NAME|my-service|g" Dockerfile
-   rm spring-petclinic-$APP_NAME-$VERSION.jar
-   ```
+    * vets-service
 
-   * vets-service
+    ```
+    export APP_NAME="vets-service"
+    cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
+    sed -i "s|my-service|$APP_NAME|g" Dockerfile
+    ```
 
-   ```
-   export APP_NAME="vets-service"
-   cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
-   sed -i "s|my-service|$APP_NAME|g" Dockerfile
-   ```
+    ```
+    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
+    ```
 
-   ```
-   az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
-   ```
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp create \
+       --name $APP_NAME \
+       --resource-group $RESOURCE_GROUP \
+       --source .  \
+       --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "vets-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
+       --registry-server $MYACR.azurecr.io \
+       --registry-identity $USER_ID \
+       --environment $ACA_ENVIRONMENT \
+       --user-assigned $USER_ID \
+       --ingress internal \
+       --target-port 8080 \
+       --min-replicas 1 \
+       --runtime java
+    ```
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp create \
-      --name $APP_NAME \
-      --resource-group $RESOURCE_GROUP \
-      --source .  \
-      --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "vets-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
-      --registry-server $MYACR.azurecr.io \
-      --registry-identity $USER_ID \
-      --environment $ACA_ENVIRONMENT \
-      --user-assigned $USER_ID \
-      --ingress internal \
-      --target-port 8080 \
-      --min-replicas 1 \
-      --runtime java
-   ```
+    ```
+    sed -i "s|$APP_NAME|my-service|g" Dockerfile
+    rm spring-petclinic-$APP_NAME-$VERSION.jar
+    ```
 
-   ```
-   sed -i "s|$APP_NAME|my-service|g" Dockerfile
-   rm spring-petclinic-$APP_NAME-$VERSION.jar
-   ```
+    * visits-service
 
-   * visits-service
+    ```
+    export APP_NAME="visits-service"
+    cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
+    sed -i "s|my-service|$APP_NAME|g" Dockerfile
+    ```
 
-   ```
-   export APP_NAME="visits-service"
-   cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
-   sed -i "s|my-service|$APP_NAME|g" Dockerfile
-   ```
+    ```
+    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
+    ```
 
-   ```
-   az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
-   ```
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp create \
+       --name $APP_NAME \
+       --resource-group $RESOURCE_GROUP \
+       --source .  \
+       --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "visits-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
+       --registry-server $MYACR.azurecr.io \
+       --registry-identity $USER_ID \
+       --environment $ACA_ENVIRONMENT \
+       --user-assigned $USER_ID \
+       --ingress internal \
+       --target-port 8080 \
+       --min-replicas 1 \
+       --runtime java
+    ```
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp create \
-      --name $APP_NAME \
-      --resource-group $RESOURCE_GROUP \
-      --source .  \
-      --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "visits-service"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
-      --registry-server $MYACR.azurecr.io \
-      --registry-identity $USER_ID \
-      --environment $ACA_ENVIRONMENT \
-      --user-assigned $USER_ID \
-      --ingress internal \
-      --target-port 8080 \
-      --min-replicas 1 \
-      --runtime java
-   ```
+    ```
+    sed -i "s|$APP_NAME|my-service|g" Dockerfile
+    rm spring-petclinic-$APP_NAME-$VERSION.jar
+    ```
 
-   ```
-   sed -i "s|$APP_NAME|my-service|g" Dockerfile
-   rm spring-petclinic-$APP_NAME-$VERSION.jar
-   ```
+    * admin-server
 
-   * admin-server
+    ```
+    export APP_NAME="admin-server"
+    cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
+    sed -i "s|my-service|$APP_NAME|g" Dockerfile
+    ```
 
-   ```
-   export APP_NAME="admin-server"
-   cp ../spring-petclinic-$APP_NAME/target/spring-petclinic-$APP_NAME-$VERSION.jar spring-petclinic-$APP_NAME-$VERSION.jar
-   sed -i "s|my-service|$APP_NAME|g" Dockerfile
-   ```
+    ```
+    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
+    ```
 
-   ```
-   az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
-   ```
-
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp create \
-      --name $APP_NAME \
-      --resource-group $RESOURCE_GROUP \
-      --source .  \
-      --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "admin-server"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
-      --registry-server $MYACR.azurecr.io \
-      --registry-identity $USER_ID \
-      --environment $ACA_ENVIRONMENT \
-      --user-assigned $USER_ID \
-      --ingress external \
-      --target-port 8080 \
-      --min-replicas 1 \
-      --runtime java
-   ```
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp create \
+       --name $APP_NAME \
+       --resource-group $RESOURCE_GROUP \
+       --source .  \
+       --env-vars APPLICATIONINSIGHTS_CONNECTION_STRING=$AI_CONNECTIONSTRING APPLICATIONINSIGHTS_CONFIGURATION_CONTENT='{"role": {"name": "admin-server"}}' InstrumentationKey=$AI_CONNECTIONSTRING \
+       --registry-server $MYACR.azurecr.io \
+       --registry-identity $USER_ID \
+       --environment $ACA_ENVIRONMENT \
+       --user-assigned $USER_ID \
+       --ingress external \
+       --target-port 8080 \
+       --min-replicas 1 \
+       --runtime java
+    ```
   
-   ```
-   sed -i "s|$APP_NAME|my-service|g" Dockerfile
-   rm spring-petclinic-$APP_NAME-$VERSION.jar 
-   ```
+    ```
+    sed -i "s|$APP_NAME|my-service|g" Dockerfile
+    rm spring-petclinic-$APP_NAME-$VERSION.jar 
+    ```
 
 1. Once all the deployment succeeds, navigate to your **Container App Environment** and select **Services (1)** from left menu and select **myconfigserver (2)**.
 
-   ![](./media/ex2img12.png)
+    ![](./media/ex2img12.png)
 
 1. On the **myconfiserver** pane, select all Container Apps under **Bindings (1)** and click on **Next (2)**.
 
-   ![](./media/ex2img13.png)
+    ![](./media/ex2img13.png)
 
 1. Review the configurations and click on **Configure**.
 
 1. Once the configuration is completed for myconfigserver, navigate back to **Services** and select **eureka**.
 
-   ![](./media/ex2img14.png)
+    ![](./media/ex2img14.png)
 
 1. On the **eureka** pane, select all Container Apps under **Bindings (1)** and click on **Next (2)**.
 
-   ![](./media/ex2img13.png)
+    ![](./media/ex2img13.png)
 
 1. Review the configurations and click on **Configure**.
 
 1. Please make sure, that the **Connected Apps** property for both java components are populated to **5** before proceeding further.
 
-   ![](./media/ex-01-new2.png)
+    ![](./media/ex-01-new2.png)
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+- If you receive a success message, you can proceed to the next task.
+- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
      
-   <validation step="5f64a11d-c413-4d26-a1d8-720a3c22f147" />
+<validation step="5f64a11d-c413-4d26-a1d8-720a3c22f147" />
 
  ## Task 4: Analyze application specific monitoring data
 
