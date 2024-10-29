@@ -220,10 +220,6 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 
     ![](./media/ex3img12.png)
 
-1. From this page, copy the **Spring.datasource.username** value. By clicking on eye icon, you can reveal the username. Copy the username and note it down, you will be using this in the next task.
-
-    ![](./media/ex-03-new6.png)
-
 ## Task 3: Update the applications to use passwordless connectivity
 
 1. In the Azure Portal, navigate to your **Container App Environment**, select **Services (1)** from left menu and click on **myconfigserver (2)** java component from the list.
@@ -264,12 +260,10 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 1. Once after you login to your **Postgre SQL**, run the following command to give permission for the application to use the database.
 
     ```
-    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO <USERNAME>;
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO public;
     ```
 
     ![](./media/ex-03-new9.png)
-
-    >**Note:** Make sure you replace the `<USERNAME>` with the name you have copied earlier.
  
 1. Once the configurations are done, navigate back to **Azure Portal**, to the resource list and select **api-gateway** Container App from the list.
 
