@@ -442,7 +442,7 @@ In this task, you will configure Application Insights to receive monitoring data
 
     ![](./media/ex2img20.png)
 
-   >**&#128161;Tip:** You can also drag your mouse on the graph to select a specific time period, and it will update the view.
+    >**&#128161;Tip:** You can also drag your mouse on the graph to select a specific time period, and it will update the view.
 
 1. Select **Live Metrics** from left menu, to see live metrics of your application. This will show you near real time performance of your application, as well as the logs and traces coming in.
    
@@ -454,13 +454,13 @@ In this task, you will configure Application Insights to receive monitoring data
    
 1. On **Create Standerd test** pane, provide the following details:
 
-   - **Test name** : `demotest`**(1)**.
-   - **URL** : Provide the **Application URL** of `api-gateway` **(2)** service.
-   - Click on **Create (3)**.
+    - **Test name** : `demotest`**(1)**.
+    - **URL** : Provide the **Application URL** of `api-gateway` **(2)** service.
+    - Click on **Create (3)**.
 
-     ![](./media/ex2img23.png)
+      ![](./media/ex2img23.png)
 
-     >Once created every 5 minutes your application will now be pinged for availability from 5 test locations.
+      >Once created every 5 minutes your application will now be pinged for availability from 5 test locations.
 
 1. Select the **three dots** on the right of your newly created availability test and select **Open Rules (Alerts) page**.
 
