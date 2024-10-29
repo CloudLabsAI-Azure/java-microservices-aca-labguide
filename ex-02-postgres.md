@@ -218,10 +218,6 @@ In this task, you will configure Application Insights to receive monitoring data
    az containerapp delete --name $APP_NAME --resource-group $RESOURCE_GROUP --yes
    ```
 
-   > The output will look similar to this.
-
-      ![](./media/ex-02-mew2.png)
-
    ```
    MSYS_NO_PATHCONV=1 az containerapp create \
       --name $APP_NAME \
