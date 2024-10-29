@@ -19,17 +19,17 @@ After you complete this lab, you will be able to:
 
 In this task, you will use Azure portal to inspect the customers-service container app. Once the replica is running, you will view live console logs through the Log Stream feature.
 
-1. Navigate to the **Azure portal**, and to the resource group where you deployed your Azure Container Apps environment. Select the **customers-service** container app. 
+1. Navigate to the **Azure portal**, and to the resource group where you deployed your Azure Container Apps environment. Select the **api-gateway** container app. 
 
-   ![](./media/ex2img2.png)
+   ![](./media/javaimg1.png)
 
 1. In the left menu, under **Application**, select **Revisions and replicas** and check the status of replica. It should be in **Running state**.
 
-   ![](./media/ex2img3.png)
+   ![](./media/javaimg2.png)
 
 1. Once the replica is in running state, you can see the live console logs by selecting **Log Stream** from left menu.
 
-   ![](./media/ex2img4.png)
+   ![](./media/javaimg3.png)
 
 ## Task 2: Configure Azure Container Apps environment monitoring
 

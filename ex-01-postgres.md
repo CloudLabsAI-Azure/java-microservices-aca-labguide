@@ -111,8 +111,7 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 1. After successfully loging into your account, in terminal and run the following command to add the required extension.
 
    ```
-   az extension remove -n containerapp
-   az extension add --name containerapp --version 0.3.50
+   az extension add --name containerapp --version 0.3.53
    ```
 
 ## Task 2: Set up a configuration repository
@@ -540,12 +539,6 @@ In this task, you will create configuration server which uses the configuration 
 1. Now you will see your **Petclinic** application is successfully running on container apps.
 
     ![](./media/ex1img27.png)
-
-1. Navigate to **owners** tab and select **All**, you can see the user details which are rendered from the database.
-
-    ![](./media/ex1img28.png)
-
-    >**&#128221;Note:** Refresh the page, if you are not able to see user data.
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 - If you receive a success message, you can proceed to the next task.
