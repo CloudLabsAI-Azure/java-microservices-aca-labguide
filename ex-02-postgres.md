@@ -414,7 +414,7 @@ In this task, you will configure Application Insights to receive monitoring data
 
  In this task, you will analyze the results those are retrived on Application Insights resource. You will go through multiple features available in Application Insights to inspect your application.
 
- 1. Navigate to the Azure Portal from your browser. Select **petclinic-<inject key="DeploymentID" enableCopy="false" />** resource group from the list.
+1. Navigate to the Azure Portal from your browser. Select **petclinic-<inject key="DeploymentID" enableCopy="false" />** resource group from the list.
   
     ![](./media/ex1img9.png)
 
@@ -424,7 +424,7 @@ In this task, you will configure Application Insights to receive monitoring data
 
 1. On the overview page of **Application Insights**, you can already see data about `Failed requests`, `Server response time`, `server requests` and `Availability`.
 
-   ![](./media/ex2img16.png)
+    ![](./media/ex2img16.png)
 
 1. Select **Application map** from the left menu. This will show you information about the different applications running in your Spring Cloud Service and their dependencies.
 
