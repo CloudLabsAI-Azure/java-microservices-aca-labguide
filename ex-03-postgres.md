@@ -87,12 +87,12 @@ In this task, you will perform the steps to create a database administrator acco
        -o tsv)
    ```
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+- If you receive a success message, you can proceed to the next task.
+- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
      
-   <validation step="01fc7475-1189-4bd8-90b6-32c86d47d206" />
+<validation step="01fc7475-1189-4bd8-90b6-32c86d47d206" />
 
 ## Task 2: Create service connections from the microservices to the database server
 
@@ -102,193 +102,192 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 
 1. For creating a service connector you will need to add the serviceconnector-passwordless extension.
 
-   ```
-   az extension add --name serviceconnector-passwordless --upgrade
-   ```
+    ```
+    az extension add --name serviceconnector-passwordless --upgrade
+    ```
 
 1. You will need your `subscription ID` and `resources IDs` to create service conections. Run the following commands to get this.
 
-   ```
-   SUBID=$(az account show --query id -o tsv)
+    ```
+    SUBID=$(az account show --query id -o tsv)
 
-   CUSTOMERS_ID=$(az containerapp show \
+    CUSTOMERS_ID=$(az containerapp show \
                  --resource-group $RESOURCE_GROUP \
                  --name customers-service \
                  --query id \
                  -o tsv)
 
     VISITS_ID=$(az containerapp show \
-                --resource-group $RESOURCE_GROUP \
-                --name visits-service \
-                --query id \
-                -o tsv)
+                 --resource-group $RESOURCE_GROUP \
+                 --name visits-service \
+                 --query id \
+                 -o tsv)
     
     VETS_ID=$(az containerapp show \
               --resource-group $RESOURCE_GROUP \
               --name vets-service \
               --query id \
               -o tsv)
-   ```
+    ```
 
 1. Create the service connection for the `customers-service`.
 
-   ```
-   CLIENT_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query 'clientId' --output tsv)
-   echo $CLIENT_ID
+    ```
+    CLIENT_ID=$(az identity show --resource-group $RESOURCE_GROUP --name $ACA_IDENTITY --query 'clientId' --output tsv)
+    echo $CLIENT_ID
 
-   MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
-      --connection Postgres_conn \
-      --source-id $CUSTOMERS_ID \
-      --target-id $DB_ID \
-      --client-type SpringBoot \
-      --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
-      -c customers-service
-   ```
+    MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
+       --connection Postgres_conn \
+       --source-id $CUSTOMERS_ID \
+       --target-id $DB_ID \
+       --client-type SpringBoot \
+       --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
+       -c customers-service
+    ```
 
 1. Now that you have created the service connection, its time to validate the connection.
 
-   ```
-   CUSTOMERS_CONN_ID=$(az containerapp connection list \
-                --resource-group $RESOURCE_GROUP \
-                --name customers-service \
-                --query [].id -o tsv)
+    ```
+    CUSTOMERS_CONN_ID=$(az containerapp connection list \
+                 --resource-group $RESOURCE_GROUP \
+                 --name customers-service \
+                 --query [].id -o tsv)
    
-   MSYS_NO_PATHCONV=1 az containerapp connection validate \
-       --id $CUSTOMERS_CONN_ID
-   ```
+    MSYS_NO_PATHCONV=1 az containerapp connection validate \
+        --id $CUSTOMERS_CONN_ID
+    ```
    
-   ![](./media/ex3img8.png)
+    ![](./media/ex3img8.png)
 
-   >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
+    >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
 
 1. In the same way create the service connections for the `vets-service` and `visits-service`. and validate them.
 
-   * vets-service
+    * vets-service
    
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
-      --connection Postgres_conn \
-      --source-id $VETS_ID \
-      --target-id $DB_ID \
-      --client-type SpringBoot \
-      --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
-      -c vets-service
-   ```
-   ```
-   VETS_CONN_ID=$(az containerapp connection list \
-                --resource-group $RESOURCE_GROUP \
-                --name vets-service \
-                --query [].id -o tsv)
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
+       --connection Postgres_conn \
+       --source-id $VETS_ID \
+       --target-id $DB_ID \
+       --client-type SpringBoot \
+       --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
+       -c vets-service
+    ```
+    ```
+    VETS_CONN_ID=$(az containerapp connection list \
+                 --resource-group $RESOURCE_GROUP \
+                 --name vets-service \
+                 --query [].id -o tsv)
    
-   MSYS_NO_PATHCONV=1 az containerapp connection validate \
-       --id $VETS_CONN_ID
-   ```
-   * visits-service
+    MSYS_NO_PATHCONV=1 az containerapp connection validate \
+        --id $VETS_CONN_ID
+    ```
+    * visits-service
 
-   ```
-   MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
-      --connection Postgres_conn \
-      --source-id $VISITS_ID \
-      --target-id $DB_ID \
-      --client-type SpringBoot \
-      --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
-      -c visits-service
-   ```
-   ```
-   VISITS_CONN_ID=$(az containerapp connection list \
-                --resource-group $RESOURCE_GROUP \
-                --name visits-service \
-                --query [].id -o tsv)
+    ```
+    MSYS_NO_PATHCONV=1 az containerapp connection create Postgres-flexible \
+       --connection Postgres_conn \
+       --source-id $VISITS_ID \
+       --target-id $DB_ID \
+       --client-type SpringBoot \
+       --user-identity client-id=$CLIENT_ID  subs-id=$SUBID \
+       -c visits-service
+    ```
+    ```
+    VISITS_CONN_ID=$(az containerapp connection list \
+                 --resource-group $RESOURCE_GROUP \
+                 --name visits-service \
+                 --query [].id -o tsv)
    
-   MSYS_NO_PATHCONV=1 az containerapp connection validate \
-      --id $VISITS_CONN_ID
-   ```
+    MSYS_NO_PATHCONV=1 az containerapp connection validate \
+       --id $VISITS_CONN_ID
+    ```
 
-   ![](./media/ex3img9.png)
+    ![](./media/ex3img9.png)
 
-   >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
+    >**&#128221;Note:** The output of this command should show that the connection was made **successful**.
 
 1. In the Azure Portal, navigate to your **customers-service** container app.
 
-   ![](./media/ex3img10.png)
+    ![](./media/ex3img10.png)
 
 1. In the customers-service app, select the **Service Connector (1)** from left menu. Notice that you have connection named **DB for Postgres flexible server (2)**.
 
-   ![](./media/ex3img11.png)
+    ![](./media/ex3img11.png)
 
 1. Notice that the service connector has all the config values set like `spring.datasource.url`, `spring.datasource.username`, but for instance no `spring.datasource.password`.Instead of spring.datasource.password it has a `spring.cloud.azure.credential.client-id`, which is the client ID of your managed identity. It also defines 2 additional variables `spring.datasource.azure.passwordless-enabled` and `spring.cloud.azure.credential.managed-identity-enabled` for enabling the passwordless connectivity.
 
-   ![](./media/ex3img12.png)
+    ![](./media/ex3img12.png)
 
 1. From this page, copy the **Spring.datasource.username** value. By clicking on eye icon, you can reveal the username. Copy the username and note it down, you will be using this in the next task.
 
-   ![](./media/ex-03-new6.png)
+    ![](./media/ex-03-new6.png)
 
 ## Task 3: Update the applications to use passwordless connectivity
 
 1. In the Azure Portal, navigate to your **Container App Environment**, select **Services (1)** from left menu and click on **myconfigserver (2)** java component from the list.
 
-   ![](./media/ex3img13.png)
+    ![](./media/ex3img13.png)
 
 1. On **Configure Java component** page, select the previous **Git Configuration (1)** and click on **Delete (2)**.
 
-   ![](./media/ex3img14.png)
+    ![](./media/ex3img14.png)
 
 1. After the configuration is deleted, click on **Add** and provide the following details:
 
-   - **Type** : Leave as `Default` **(1)**.
-   - **URI** : Provide code repository URI which looks similarto this `https://github.com/<username>/java-microservices-aca-lab.git` **(2)** . Make sure you replace `<username>` with your GitHub Username.
-   - **Branch name** : `main` **(3)**.
-   - **Search paths** : `config` **(4)**.
-   - **Authentication** : Leave as `Public` **(5)**.
-   - Click on **Add (6)**.
+    - **Type** : Leave as `Default` **(1)**.
+    - **URI** : Provide code repository URI which looks similarto this `https://github.com/<username>/java-microservices-aca-lab.git` **(2)** . Make sure you replace `<username>` with your GitHub Username.
+    - **Branch name** : `main` **(3)**.
+    - **Search paths** : `config` **(4)**.
+    - **Authentication** : Leave as `Public` **(5)**.
+    - Click on **Add (6)**.
    
-     ![](./media/ex3updatedimg1.png)
+      ![](./media/ex3updatedimg1.png)
 
 1. In **Configure Java component** page, scroll down and click on **Next** 
 
-   ![](./media/ex3img16.png)
+    ![](./media/ex3img16.png)
 
 1. Review your configurations and click on configure.
 
 1. Once the configurations are done, open **Powershell** from the start menu. Run the following command to connect to your **Postgre SQL** server.
 
-   ```
-   psql -h postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />.postgres.database.azure.com -p 5432 -U myadmin petclinic
-   ```
+    ```
+    psql -h postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />.postgres.database.azure.com -p 5432 -U myadmin petclinic
+    ```
 
-   ![](./media/ex-03-new.png)
+    ![](./media/ex-03-new.png)
 
-   >**Note:** When it prompts for **Password**, provide `admin@123` as password.
+    >**Note:** When it prompts for **Password**, provide `admin@123` as password.
 
 1. Once after you login to your **Postgre SQL**, run the following command to give permission for the application to use the database.
 
-   ```
-   GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO <USERNAME>;
-   ```
+    ```
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO <USERNAME>;
+    ```
 
-   ![](./media/ex-03-new9.png)
+    ![](./media/ex-03-new9.png)
 
-   >**Note:** Make sure you replace the `<USERNAME>` with the name you have copied earlier.
-
+    >**Note:** Make sure you replace the `<USERNAME>` with the name you have copied earlier.
+ 
 1. Once the configurations are done, navigate back to **Azure Portal**, to the resource list and select **api-gateway** Container App from the list.
 
-   ![](./media/ex1img21.png)
+    ![](./media/ex1img21.png)
 
 1. Copy the **Application URL**, paste it in a new browser tab.
 
-   ![](./media/ex1img29.png)
+    ![](./media/ex1img29.png)
 
 1. Now you will see your **Petclinic** application is successfully running on container apps.
 
-   ![](./media/ex1img27.png)
+    ![](./media/ex1img27.png)
 
 1. Navigate to **owners** tab and select **All**, you can see the user details which are rendered from the database.
 
-   ![](./media/ex1img28.png)
+    ![](./media/ex1img28.png)
 
-   >**&#128221;Note:** Refresh the page, if you are not able to see user data.
-
+    >**&#128221;Note:** Refresh the page, if you are not able to see user data.
 
 ## Summary
 
