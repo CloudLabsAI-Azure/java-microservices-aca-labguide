@@ -205,7 +205,6 @@ In this task, you will configure Application Insights to receive monitoring data
 
     ![](./media/ex1img53.png)
 
-
 1. Run the below command blocks one by one, which deletes the previous container app and creates a new container app from `Dockerfile`.
 
     ```
