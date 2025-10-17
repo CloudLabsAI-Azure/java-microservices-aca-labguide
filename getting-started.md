@@ -1,6 +1,6 @@
 # Deploying and Running Java Application in Azure Container App
 
-### Overall Estimated Duration: 4 Hours
+### Overall Estimated Duration: 8 Hours
 
 ## Overview
 
@@ -118,5 +118,6 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 2. Now, click on Next from the lower right corner to move on to the next page.
 
 ## Happy Learning!!
+
 
 
