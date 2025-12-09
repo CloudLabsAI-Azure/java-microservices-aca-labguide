@@ -90,12 +90,12 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
    ![](./media/04.png)
 
-3. Now enter the following password and click on **Sign in**.
+3. Now enter the following Temporary Access Pass and click on **Sign in**.
 
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   - Temporary Access Pass: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/05.png)
-
+     ![](./media/TAP.png)
+ 
    >**Note:** If you see the Action Required dialog box, then select Ask Later option.
 
    ![](./media/asklater.png)
@@ -115,7 +115,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
    - Email Support: labs-support@spektrasystems.com
    - Live Chat Support: https://cloudlabs.ai/labs-support
 
-2. Now, click on Next from the lower right corner to move on to the next page.
+2. Now, click on Next from the lower right corner to move on to the next page
 
 ## Happy Learning!!
 
