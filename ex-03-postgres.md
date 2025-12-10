@@ -72,19 +72,19 @@ In this task, you will perform the steps to create a database administrator acco
 
    ```
    DATABASE_NAME=petclinic
-
-   MSYS_NO_PATHCONV=1 az postgres flexible-server ad-admin create \
-      --resource-group $RESOURCE_GROUP \
-      --server-name $POSTGRES_SERVER_NAME \
-      --object-id $CURRENT_USER_OBJECTID \
-      --display-name $CURRENT_USER 
-
-   DB_ID=$(az postgres flexible-server db show \
-       --server-name $POSTGRES_SERVER_NAME \
-       --resource-group $RESOURCE_GROUP \
-       -d $DATABASE_NAME \
-       --query id \
-       -o tsv)
+ 
+   MSYS_NO_PATHCONV=1 az postgres flexible-server microsoft-entra-admin create \
+   --resource-group $RESOURCE_GROUP \
+   --server-name $POSTGRES_SERVER_NAME \
+   --object-id $CURRENT_USER_OBJECTID \
+   --display-name $CURRENT_USER
+ 
+    DB_ID=$(az postgres flexible-server db show \
+    --server-name $POSTGRES_SERVER_NAME \
+    --resource-group $RESOURCE_GROUP \
+    -d $DATABASE_NAME \
+    --query id \
+    -o tsv)
    ```
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
