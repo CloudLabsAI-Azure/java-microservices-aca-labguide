@@ -20,6 +20,8 @@ Learn how to deploy and manage the Spring Petclinic microservices on Azure Conta
 
  - **Security Management:** Enhance security by managing application secrets effectively.
 
+   **Note:** This workshop is designed for a total duration of 4 hours. Participants may choose either the MySQL method or the PostgreSQL method, and completing any one of these paths will take the full 4 hours. If desired and time allows, both methods may be explored, but this is optional.
+
 ## Pre-requisites
 
  - **Familiarity with Azure:** Basic knowledge of Azure services and the Azure portal for managing cloud resources.
@@ -34,7 +36,7 @@ The architecture uses a microservices approach, featuring a Container App Enviro
 
 ## Architecture Diagram
 
-![](./media/acalab-arch.png)
+![](./media/31.png)
 
 ## Explanation of Components
 
@@ -58,25 +60,25 @@ Welcome to your Java Apps On ACA Lab! We've prepared a seamless environment for 
 
 Once you're ready to dive in, your virtual machine and lab guide will be right at your fingertips within your web browser.
 
-![](./media/gs-01.png)
+![](./media/1.png)
 
 ### Exploring Your Lab Resources
 
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
 
-![](./media/gs-02.png)
+![](./media/2.png)
 
 ### Utilizing the Split Window Feature
 
 For convenience, you can open the lab guide in a separate window by selecting the Split Window button from the Top right corner.
 
-![](./media/gs-03.png)
+![](./media/3.png)
 
 ### Managing Your Virtual Machine
 
 Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
 
-![](./media/gs-04.png)
+![](./media/4.png)
 
 ## Let's Get Started with Azure Portal
 
@@ -88,19 +90,20 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
 
-   ![](./media/04.png)
+     ![](./media/6.png)
 
 3. Now enter the following Temporary Access Pass and click on **Sign in**.
 
    - Temporary Access Pass: <inject key="AzureAdUserPassword"></inject>
 
-     ![](./media/TAP.png)
+     ![](./media/7.png)
  
    >**Note:** If you see the Action Required dialog box, then select Ask Later option.
 
-   ![](./media/asklater.png)
 
 4. If you see the pop-up **Stay Signed in?**, click No.
+
+    ![](./media/8.png)
 
 5. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
@@ -112,10 +115,12 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
 1. The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.Learner Support Contacts:
 
-   - Email Support: labs-support@spektrasystems.com
+   - Email Support: Cloudlabs-support@spektrasystems.com
    - Live Chat Support: https://cloudlabs.ai/labs-support
 
-2. Now, click on Next from the lower right corner to move on to the next page
+Now, click on Next from the lower right corner to move on to the next page.
+
+   ![](./media/10.png)
 
 ## Happy Learning!!
 
