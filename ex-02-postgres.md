@@ -25,11 +25,11 @@ In this task, you will use Azure portal to inspect the customers-service contain
 
 1. In the left menu, under **Application**, select **Revisions and replicas** and check the status of replica. It should be in **Running state**.
 
-   ![](./media/javaimg2.png)
+   ![](./media/20.png)
 
 1. Once the replica is in running state, you can see the live console logs by selecting **Log Stream** from left menu.
 
-   ![](./media/javaimg3.png)
+   ![](./media/21.png)
 
 ## Task 2: Configure Azure Container Apps environment monitoring
 
@@ -72,7 +72,7 @@ In this task, you will configure monitoring for your Azure Container Apps enviro
 
 1. From the left menu, select **Logs** under monitoring and cancel the tabs by clicking **X**.
 
-   ![](./media/ex2img5.png)
+   ![](./media/22.png)
 
 1. In the **New Query** page, select **ContainerAppSystemLogs_CL (1)** under Custom Logs,  verify it on the **query pane (2)** and click on **Run (3)**
 
@@ -475,11 +475,7 @@ In this task, you will configure Application Insights to receive monitoring data
 
 1. Select **Logs (1)** from left menu, select **Queries (2)** from the top and double click on **Operations performance (4)** by expanding **Performance (3)**.
 
-    ![](./media/ex2img27.png)
-
-1. Once you double click on Operations performance, you can see it on query pane. Click on **Run** to run the query.
-
-    ![](./media/ex2img28.png)
+    ![](./media/27.png)
 
 1. After running the query, you can see the results in the results pane.
 
@@ -490,3 +486,7 @@ In this task, you will configure Application Insights to receive monitoring data
 In this exercise, you have inspected your Azure Container Apps, set up environment monitoring using Log Analytics, and configured Application Insights to collect telemetry data. You also analyzed specific monitoring data to better understand your application's performance.
 
 ### You successfully completed this Lab!
+
+Now, click on Next from the lower right corner to move on to the next page.
+
+   ![](./media/10.png)

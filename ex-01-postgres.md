@@ -27,7 +27,7 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 
 1. On the GitHub Login page, provide your github credentials which you have copied earlier. CLick on **Sign in**.
 
-   ![](./media/ex1img30.png)
+   ![](./media/11.png)
 
 1. Once after clicking on **Sign in**, you will be prompted to provide **verification code** which will be sent to email. Navigate to [Outlook Login](https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=162&ct=1728385101&rver=7.5.2211.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3den-us%26country%3dus%26RpsCsrfState%3d906c2f66-4c3e-997e-f6dc-9ab11061dd1a&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c) and login using the same credentials you used for GitHub and note down the **verification code** and use it here.
 
@@ -45,7 +45,7 @@ In this task, you will fork a parent repository to your GitHub account, set up t
 
 1. On **Create a new fork** pane, leave everything as default and click on **Create fork**.
 
-   ![](./media/ex1img32.png)
+   ![](./media/12.png)
 
    >**Note:** If you facing any issues using microsoft edge, please install chrome browser and continue further.
 
@@ -206,11 +206,11 @@ In this task, you will create a private GitHub repository to securely store conf
 
 1. on **Do you trust the authors of the files of this folder?** pop up, click on **Yes, I trust the authors**.
 
-   ![](./media/ex-01-new.png)
+   ![](./media/13.png)
 
 1. Once a new window of **Visual Studio Code** opened, select **application.yml** file from the explorer menu.
 
-   ![](./media/ex1img51.png)
+   ![](./media/14.png)
 
 1. Once the **application.yml** file is open, replace the existing content with the following content.
 
@@ -467,11 +467,11 @@ In this task, you will create configuration server which uses the configuration 
 
 1. To setup java components like config server and eureka server, In the Azure Portal, select **resource group** from navigate menu.
 
-    ![](./media/ex1img8.png)
+    ![](./media/15.png)
 
 1. From the resource group list, select the resource group **petclinic-<inject key="DeploymentID" enableCopy="false" />**.
 
-    ![](./media/ex1img9.png)
+    ![](./media/16.png)
 
 1. In the resource list, select **acaenv-petclinic-<inject key="DeploymentID" enableCopy="false" />** from the Azure Portal.
 
@@ -526,15 +526,15 @@ In this task, you will create configuration server which uses the configuration 
 
 1. Please make sure, that the **Connected Apps** property for both java components are populated to **5** before proceeding further.
 
-    ![](./media/ex-01-new2.png)
+    ![](./media/17.png)
 
 1. Once the configurations are done, navigate to the resource list and select **api-gateway** Container App from the list.
 
-    ![](./media/ex1img21.png)
+    ![](./media/18.png)
 
 1. Copy the **Application URL**, paste it in a new browser tab.
 
-    ![](./media/ex1img29.png)
+    ![](./media/19.png)
 
 1. Now you will see your **Petclinic** application is successfully running on container apps.
 
@@ -552,3 +552,7 @@ In this task, you will create configuration server which uses the configuration 
 In this exercise, you have set up a GitHub repository to manage configurations and used Azure CLI to prepare the cloud environment. You created a private configuration repository, updated the necessary files, and deployed the microservices of the Spring Petclinic application to Azure Container Apps (ACA). Additionally, you created Java components for the configuration and discovery servers to ensure smooth service orchestration and management and also tested the application.
 
 ### You have Successfully completed the Lab!
+
+You have successfully completed the exercise. Click on **Next >>** to proceed with the next exercise.
+
+   ![](./media/10.png)

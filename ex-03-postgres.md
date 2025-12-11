@@ -22,15 +22,15 @@ In this task, you will perform the steps to create a database administrator acco
 
 1. Navigate to the **Azure Portal** from your browser, from the resource list select **postgres-petclinic-<inject key="DeploymentID" enableCopy="false" />** postgresql server.
 
-   ![](./media/imgupdates1.png)
+   ![](./media/28.png)
 
 1. On your **Postgre SQL** page, select **Authentication (1)** from left menu under security, check **PostgreSQL and Microsoft Entra authentication (2)** option and save it using the **Save (3)** option from top menu.
 
-   ![](./media/imgupdates2.png)
+   ![](./media/29.png)
 
 1. Once after clicking on **Save**, you will get a pop up **Set authentication and restart?**, click on **Continue** and wait untill the deployment is successful.
 
-   ![](./media/imgupdates3.png)
+   ![](./media/30.png)
 
 1. Once the deployment is successful, navigate back to **Git Bash** terminal, run the following command because You will need to allow the user assigned managed identity access to the database. To configure this, you will need to first make your current logged in user account database administrator. For this to work on a Postgres database you first need an additional managed identity.
 
@@ -210,7 +210,7 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 
 1. In the Azure Portal, navigate to your **customers-service** container app.
 
-    ![](./media/ex3img10.png)
+    ![](./media/24.png)
 
 1. In the customers-service app, select the **Service Connector (1)** from left menu. Notice that you have connection named **DB for Postgres flexible server (2)**.
 
@@ -218,7 +218,7 @@ The apps deployed as the Spring Petclinic microservices will now connect using a
 
 1. Notice that the service connector has all the config values set like `spring.datasource.url`, `spring.datasource.username`, but for instance no `spring.datasource.password`.Instead of spring.datasource.password it has a `spring.cloud.azure.credential.client-id`, which is the client ID of your managed identity. It also defines 2 additional variables `spring.datasource.azure.passwordless-enabled` and `spring.cloud.azure.credential.managed-identity-enabled` for enabling the passwordless connectivity.
 
-    ![](./media/ex3img12.png)
+    ![](./media/25.png)
 
 ## Task 3: Update the applications to use passwordless connectivity
 
